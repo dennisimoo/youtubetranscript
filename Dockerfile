@@ -29,9 +29,6 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Ensure public directory exists and has correct permissions
-RUN ls -la /app/public/
-
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
 CMD [ "npm", "run", "start" ]

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Transcript Fetcher.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>YouTube Transcript Generator</h1>
+            <p>Instantly, without uploading video files.</p>
+        </header>
+
+        <div class="input-section">
+            <div class="form-group">
+                <label for="channelUrl">YouTube Channel URL</label>
+                <input 
+                    type="text" 
+                    id="channelUrl" 
+                    placeholder="https://www.youtube.com/@collegeadmissionsecrets"
+                    value="https://www.youtube.com/@collegeadmissionsecrets"
+                >
+            </div>
+            
+            <div class="form-group">
+                <label for="videoCount">Number of videos</label>
+                <select id="videoCount">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20" selected>20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            
+            <button id="fetchVideos" class="fetch-btn">Fetch Videos</button>
+        </div>
+
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Fetching videos...</p>
+        </div>
+
+        <div id="error" class="error hidden"></div>
+
+        <div id="contentToggle" class="content-toggle hidden">
+            <button id="videosToggle" class="toggle-btn active" data-type="videos">
+                Videos (<span id="videosCount">0</span>)
+            </button>
+            <button id="shortsToggle" class="toggle-btn" data-type="shorts">
+                Shorts (<span id="shortsCount">0</span>)
+            </button>
+        </div>
+
+        <div id="videosContainer" class="videos-container"></div>
+
+        <div id="transcriptModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle" class="modal-title"></h3>
+                    <div class="modal-actions">
+                        <button id="copyTranscript" class="copy-btn">Copy</button>
+                        <button id="closeModal" class="close-btn">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div id="transcriptLoading" class="loading">
+                        <div class="spinner"></div>
+                        <p>Fetching transcript...</p>
+                    </div>
+                    <div id="transcriptContent" class="transcript-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
